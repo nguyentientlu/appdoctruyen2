@@ -70,6 +70,5 @@ public class MainActivity extends AppCompatActivity {
         //goi anination vao viewFlipper
         viewFlipper.setInAnimation(animation_in);
         viewFlipper.setInAnimation(animation_out);
-
     }
 }

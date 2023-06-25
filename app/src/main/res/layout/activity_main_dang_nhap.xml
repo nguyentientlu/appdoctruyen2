@@ -5,14 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainDangNhap"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/background">
 <TextView
     android:layout_marginTop="100dp"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="Đăng nhập"
     android:textSize="40sp"
-    android:textColor="#2196F3"
+    android:textColor="@color/black"
     android:textStyle="bold"
     android:layout_gravity="center">
 </TextView>
@@ -23,6 +24,8 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:textColorHint="@color/black"
+        android:textStyle="bold"
         android:hint="Tài khoản"
         >
     </EditText>
@@ -34,6 +37,8 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:textColorHint="@color/black"
+        android:textStyle="bold"
         android:hint="Mật khẩu"
         >
     </EditText>
@@ -51,4 +56,30 @@
         android:layout_gravity="center"
         android:layout_width="150dp"
         android:layout_height="wrap_content"></Button>
+    <LinearLayout
+        android:layout_marginTop="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/socialicons"
+        android:gravity="center"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="20dp"
+            android:src="@drawable/google"/>
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="20dp"
+            android:src="@drawable/facebook"/>
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="20dp"
+            android:src="@drawable/zalo"/>
+    </LinearLayout>
 </LinearLayout>

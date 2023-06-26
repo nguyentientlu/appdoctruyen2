@@ -117,13 +117,16 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position == 0){
                     if(i == 2){
-
+                        Intent intent = new Intent(MainActivity.this,MainAdmin.class);
+                        startActivity(intent);
                     }
                     else {
                         Toast.makeText(MainActivity.this, "Bạn không có quyền đăng bài", Toast.LENGTH_SHORT).show();
                     }
                 }
                 else if(position == 1){
+                    Intent intent = new Intent(MainActivity.this, MainThongTin.class);
+                    startActivity(intent);
 
                 }
                 else if (position == 2 ){

@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" >
 
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -19,6 +20,12 @@
             android:exported="false" />
         <activity
             android:name=".MainDangBai"
+            android:exported="false" />
+        <activity
+            android:name=".MainNoiDung"
+            android:exported="false" />
+        <activity
+            android:name=".mainTimkiem"
             android:exported="false" />
         <activity
             android:name=".MainDangKy"

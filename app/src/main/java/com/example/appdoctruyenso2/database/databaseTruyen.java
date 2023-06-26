@@ -247,10 +247,16 @@ public class databaseTruyen extends SQLiteOpenHelper {
         Log.e("ADD TK","TC");
     }
     //add truyện
-    public void AddTruyen (databaseTruyen truyen){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(TEN_TRUYEN,truyen.getTenTruyen());
-        values.put(NOI_DUNG,truyen.getNoiDung());
+//    public void AddTruyen (databaseTruyen truyen){
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        ContentValues values = new ContentValues();
+//        values.put(TEN_TRUYEN,truyen.getTenTruyen());
+//        values.put(NOI_DUNG,truyen.getNoiDung());
+
+    //lấy 3 truyện mới nhất
+    public Cursor getDatal(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("SELECT * FROM " + TABLE_TRUYEN + " ORDER BY " + ID_TRUYEN + " DESC LIMIT 3",null);
+        return res;
     }
 }

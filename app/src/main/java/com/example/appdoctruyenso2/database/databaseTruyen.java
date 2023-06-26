@@ -12,8 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.appdoctruyenso2.model.taikhoan;
+import com.example.appdoctruyenso2.model.truyen;
+
 public class databaseTruyen extends SQLiteOpenHelper {
-//Cơ sở dữ liệu
+    //Cơ sở dữ liệu
     //tên database
     private static String DATABASE_NAME = "doctruyen";
     //bảng tài khoản
@@ -36,18 +38,18 @@ public class databaseTruyen extends SQLiteOpenHelper {
     //Context
     private Context context;
     //câu lệnh tạo bảng tài khoản
-    private String SQLQuery = "CREATE TABLE "+ TABLE_TAIKHOAN +" ( "+ID_TAI_KHOAN+" INTEGER PRIMARY KEY AUTOINCREMENT, "
-            +TEN_TAI_KHOAN+" TEXT , "
-            +MAT_KHAU+" TEXT, "
-            +EMAIL+" TEXT, "
-            + PHAN_QUYEN+" INTEGER) ";
+    private String SQLQuery = "CREATE TABLE " + TABLE_TAIKHOAN + " ( " + ID_TAI_KHOAN + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + TEN_TAI_KHOAN + " TEXT , "
+            + MAT_KHAU + " TEXT, "
+            + EMAIL + " TEXT, "
+            + PHAN_QUYEN + " INTEGER) ";
     //tạo bảng truyện
-    private String SQLQuery1 = "CREATE TABLE "+ TABLE_TRUYEN +" ( "+ID_TRUYEN+" INTEGER primary key AUTOINCREMENT, "
-            +TEN_TRUYEN+" TEXT, "
-            +NOI_DUNG+" TEXT, "
-            +IMAGE+" TEXT, "
-            +ID_TAI_KHOAN+" INTEGER , FOREIGN KEY ( "+ID_TAI_KHOAN+" ) REFERENCES "+
-            TABLE_TAIKHOAN+"("+ID_TAI_KHOAN+"))";
+    private String SQLQuery1 = "CREATE TABLE " + TABLE_TRUYEN + " ( " + ID_TRUYEN + " INTEGER primary key AUTOINCREMENT, "
+            + TEN_TRUYEN + " TEXT, "
+            + NOI_DUNG + " TEXT, "
+            + IMAGE + " TEXT, "
+            + ID_TAI_KHOAN + " INTEGER , FOREIGN KEY ( " + ID_TAI_KHOAN + " ) REFERENCES " +
+            TABLE_TAIKHOAN + "(" + ID_TAI_KHOAN + "))";
     //thêm dữ liệu vào bảng tài khoản
     private String SQLQuery2 = "INSERT INTO Taikhoan VAlUES (null,'admin','admin','admin@gmail.com',2)";
     private String SQLQuery3 = "INSERT INTO Taikhoan VAlUES (null,'admin','tien','tien@gmail.com',2)";
@@ -60,7 +62,7 @@ public class databaseTruyen extends SQLiteOpenHelper {
             "\n" +
             "Phần 2:\n" +
             "\n" +
-            "Thỏ vô cùng thất vọng vì để thua Rùa, nó nhận ra rằng nó thua chính vì quá tự tin, bất cẩn và thiếu kỷ luật. Nếu nó không xem mọi thứ quá dễ dàng và chắc thắng thì rùa không thể có cơ hội hạ được nó. Vì thế, Thỏ quyết định thách thức Rùa bằng một cuộc đua mới. Rùa đồng ý. Lần này, Thỏ chạy với tất cả sức lực của nó và chạy một mạch về đích. Nó bỏ xa Rùa đến mấy dặm đường.\n"+
+            "Thỏ vô cùng thất vọng vì để thua Rùa, nó nhận ra rằng nó thua chính vì quá tự tin, bất cẩn và thiếu kỷ luật. Nếu nó không xem mọi thứ quá dễ dàng và chắc thắng thì rùa không thể có cơ hội hạ được nó. Vì thế, Thỏ quyết định thách thức Rùa bằng một cuộc đua mới. Rùa đồng ý. Lần này, Thỏ chạy với tất cả sức lực của nó và chạy một mạch về đích. Nó bỏ xa Rùa đến mấy dặm đường.\n" +
             "Ý nghĩa câu chuyện phần 2: Biết sai và sửa sai là một đức tính tốt, đó chính là lý do giúp anh chàng thỏ giành được chiến thắng ở cuộc đua thứ 2. Mẹ hãy giải thích cho bé hiểu rằng trong công việc hàng ngày giữa một người chậm, cẩn thận và đáng tin cậy với một người nhanh nhẹn, đáng tin cậy, chắc chắn người nhanh nhẹn sẽ được trọng dụng hơn nhiều và họ sẽ tiến xa hơn trong học tập, cũng như trong cuộc sống. Cha mẹ hãy giúp bé hiểu rõ thông điệp chậm và chắc là điều tốt, nhưng nhanh và đáng tin cậy sẽ tốt hơn rất nhiều.','https://toplist.vn/images/800px/rua-va-tho-230179.jpg',1)";
     private String SQLQuery5 = "INSERT INTO Truyen VALUES (null,'Củ cải trắng','Mùa đông đã đến rồi trời lạnh buốt, Thỏ con không có gì để ăn cả. Thỏ con mặc áo vào rồi ra ngoài kiếm thức ăn. Nó đi mãi đi mãi cuối cùng cũng tìm được hai củ cải trắng. Thỏ con reo lên:\n" +
             "\n" +
@@ -203,9 +205,9 @@ public class databaseTruyen extends SQLiteOpenHelper {
             "\n" +
             "Ý nghĩa câu chuyện: Có thể cậu bé chăn cừu không phải ngay sau đó sẽ trở nên khiêm tốn, học hỏi luôn được nhưng rõ ràng là cậu đã nhận ra người ta không thể sống lẻ loi được.','https://toplist.vn/images/800px/cau-be-chan-cuu-va-cay-da-co-thu-230184.jpg',1)";
 
-//tạo bảng tại phương thức
+    //tạo bảng tại phương thức
     public databaseTruyen(@Nullable Context context) {
-        super(context,DATABASE_NAME,null,VERSION);
+        super(context, DATABASE_NAME, null, VERSION);
     }
 
     @Override
@@ -227,36 +229,52 @@ public class databaseTruyen extends SQLiteOpenHelper {
     }
 
     //phương thức lấy tất cả tài khoản
-    public Cursor getData(){
+    public Cursor getData() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("SELECT * FROM " + TABLE_TAIKHOAN,null);
+        Cursor res = db.rawQuery("SELECT * FROM " + TABLE_TAIKHOAN, null);
         return res;
     }
+
     //phương thức add tài khoản
-    public void AddTaiKhoan(taikhoan taikhoan){
+    public void AddTaiKhoan(taikhoan taikhoan) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(TEN_TAI_KHOAN,taikhoan.getTentaikhoan());
-        values.put(MAT_KHAU,taikhoan.getMatkhau());
-        values.put(EMAIL,taikhoan.getEmail());
-        values.put(PHAN_QUYEN,taikhoan.getPhanquyen());
+        values.put(TEN_TAI_KHOAN, taikhoan.getTentaikhoan());
+        values.put(MAT_KHAU, taikhoan.getMatkhau());
+        values.put(EMAIL, taikhoan.getEmail());
+        values.put(PHAN_QUYEN, taikhoan.getPhanquyen());
 
-        db.insert(TABLE_TAIKHOAN,null,values);
+        db.insert(TABLE_TAIKHOAN, null, values);
         //đoóng lại khi không dugf
         db.close();
-        Log.e("ADD TK","TC");
+        Log.e("ADD TK", "TC");
     }
-    //add truyện
-//    public void AddTruyen (databaseTruyen truyen){
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        ContentValues values = new ContentValues();
-//        values.put(TEN_TRUYEN,truyen.getTenTruyen());
-//        values.put(NOI_DUNG,truyen.getNoiDung());
 
     //lấy 3 truyện mới nhất
-    public Cursor getDatal(){
+    public Cursor getDatal() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("SELECT * FROM " + TABLE_TRUYEN + " ORDER BY " + ID_TRUYEN + " DESC LIMIT 3",null);
+        Cursor res = db.rawQuery("SELECT * FROM " + TABLE_TRUYEN + " ORDER BY " + ID_TRUYEN + " DESC LIMIT 3", null);
+        return res;
+    }
+
+    //    add truyện
+    public void AddTruyen(truyen truyen) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(TEN_TRUYEN, truyen.getTenTruyen());
+        values.put(NOI_DUNG, truyen.getNoidung());
+        values.put(IMAGE, truyen.getAnh());
+        values.put(ID_TAI_KHOAN, truyen.getID_TK());
+
+        db.insert(TABLE_TAIKHOAN,null,values);
+        db.close();
+    }
+    // delete truyện
+    public int Delete(int i){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        int res = db.delete(TABLE_TRUYEN,ID_TRUYEN+" = "+i,null);
         return res;
     }
 }

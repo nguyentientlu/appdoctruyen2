@@ -14,6 +14,11 @@ public class taikhoan {
         this.phanquyen = phanquyen;
     }
 
+    public taikhoan(String tentaikhoan, String email) {
+        this.tentaikhoan = tentaikhoan;
+        this.email = email;
+    }
+
     public taikhoan(String tentaikhoan) {
         this.tentaikhoan = tentaikhoan;
     }

@@ -9,9 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.drawable.Animatable;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,9 +18,14 @@ import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
+import com.example.appdoctruyenso2.adapter.adapterchuyenmuc;
+import com.example.appdoctruyenso2.adapter.adapterthongtin;
 import com.example.appdoctruyenso2.database.databaseTruyen;
+import com.example.appdoctruyenso2.model.chuyenmuc;
+import com.example.appdoctruyenso2.model.taikhoan;
 import com.example.appdoctruyenso2.model.truyen;
 import com.example.appdoctruyenso2.adapter.adapterTruyen;
 import com.google.android.material.navigation.NavigationView;
@@ -38,8 +41,12 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
 
     ArrayList<truyen> truyenArrayList;
+    ArrayList<chuyenmuc> chuyenmucArrayList;
+    ArrayList<taikhoan> taikhoanArrayList;
 
     adapterTruyen adapterTruyen;
+    adapterchuyenmuc adapterchuyenmuc;
+    adapterthongtin adapterthongtin;
 
     databaseTruyen databaseTruyen;
 
@@ -64,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
         listViewTruyen = findViewById(R.id.listTruyen);
         listViewthongtin = findViewById(R.id.listThongtin);
         listViewMainchinh = findViewById(R.id.listMainchinh);
+        drawerLayout = findViewById(R.id.drawerlayout);
+
 
         truyenArrayList = new ArrayList<>();
 
@@ -84,6 +93,45 @@ public class MainActivity extends AppCompatActivity {
         }
         cursor.moveToFirst();
         cursor.close();
+
+        //thông tin
+        taikhoanArrayList = new ArrayList<>();
+        taikhoanArrayList.add(new taikhoan(tentaikhoan,email));
+
+        adapterthongtin = new adapterthongtin(this,R.layout.navigation_thongtin,taikhoanArrayList);
+        listViewthongtin.setAdapter(adapterthongtin);
+
+        //chuyên mục
+        chuyenmucArrayList =new ArrayList<>();
+        chuyenmucArrayList.add(new chuyenmuc("Đăng bài",R.drawable.post_add_24));
+        chuyenmucArrayList.add(new chuyenmuc("Thông tin",R.drawable.face));
+        chuyenmucArrayList.add(new chuyenmuc("Đăng xuất",R.drawable.login_24));
+
+        adapterchuyenmuc = new adapterchuyenmuc(this,R.layout.activity_chuyenmuc,chuyenmucArrayList);
+        listViewMainchinh.setAdapter(adapterchuyenmuc);
+
+        //bắt sự kiện click vào listView
+
+        listViewMainchinh.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(position == 0){
+                    if(i == 2){
+
+                    }
+                    else {
+                        Toast.makeText(MainActivity.this, "Bạn không có quyền đăng bài", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else if(position == 1){
+
+                }
+                else if (position == 2 ){
+                    finish();
+                }
+            }
+        });
+
         //goij ham
         ActionBar();
         AcctionViewFlipper();
@@ -107,6 +155,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
     //thanh actionBar với toolBar
     private void ActionBar() {
         //hàm hỗ trợ toolbar

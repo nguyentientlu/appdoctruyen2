@@ -203,7 +203,7 @@ public class databaseTruyen extends SQLiteOpenHelper {
             "\n" +
             "Ý nghĩa câu chuyện: Có thể cậu bé chăn cừu không phải ngay sau đó sẽ trở nên khiêm tốn, học hỏi luôn được nhưng rõ ràng là cậu đã nhận ra người ta không thể sống lẻ loi được.','https://toplist.vn/images/800px/cau-be-chan-cuu-va-cay-da-co-thu-230184.jpg',1)";
 
-//tạo bảng tại phuowng thức
+//tạo bảng tại phương thức
     public databaseTruyen(@Nullable Context context) {
         super(context,DATABASE_NAME,null,VERSION);
     }
@@ -246,6 +246,13 @@ public class databaseTruyen extends SQLiteOpenHelper {
         db.close();
         Log.e("ADD TK","TC");
     }
+    //add truyện
+//    public void AddTruyen (databaseTruyen truyen){
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        ContentValues values = new ContentValues();
+//        values.put(TEN_TRUYEN,truyen.getTenTruyen());
+//        values.put(NOI_DUNG,truyen.getNoiDung());
+
     //lấy 3 truyện mới nhất
     public Cursor getDatal(){
         SQLiteDatabase db = this.getReadableDatabase();

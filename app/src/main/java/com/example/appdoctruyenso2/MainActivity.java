@@ -8,6 +8,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.drawable.Animatable;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -16,10 +17,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ViewFlipper;
 
+import com.example.appdoctruyenso2.database.databaseTruyen;
+import com.example.appdoctruyenso2.model.truyen;
+import com.example.appdoctruyenso2.adapter.adapterTruyen;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 
@@ -32,11 +37,26 @@ public class MainActivity extends AppCompatActivity {
     ListView listViewTruyen,listViewMainchinh,listViewthongtin;
     DrawerLayout drawerLayout;
 
+    ArrayList<truyen> truyenArrayList;
+
+    adapterTruyen adapterTruyen;
+
+    databaseTruyen databaseTruyen;
+
+    String email,tentaikhoan;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //nhận dữ liệu ở màn đăbg nhập gửi đến
+        Intent intentpq =getIntent();
+        int i = intentpq.getIntExtra("phang",0);
+        int idd = intentpq.getIntExtra("idd",0);
+        email = intentpq.getStringExtra("email");
+        tentaikhoan = intentpq.getStringExtra("tentaikhoan");
+
         //anhs xa
         toolbar = findViewById(R.id.toolbarMain);
         viewFlipper = findViewById(R.id.ViewFlipper);
@@ -44,11 +64,48 @@ public class MainActivity extends AppCompatActivity {
         listViewTruyen = findViewById(R.id.listTruyen);
         listViewthongtin = findViewById(R.id.listThongtin);
         listViewMainchinh = findViewById(R.id.listMainchinh);
+
+        truyenArrayList = new ArrayList<>();
+
+        databaseTruyen = new databaseTruyen(this);
+
+        Cursor cursor = databaseTruyen.getDatal();
+        while (cursor.moveToNext()){
+            int id =  cursor.getInt(0);
+            String tentruyen = cursor.getString(1);
+            String noidung = cursor.getString(2);
+            String anh = cursor.getString(3);
+            int id_tk= cursor.getInt(4);
+
+            truyenArrayList.add(new truyen(id,tentruyen,noidung,anh,id_tk));
+            adapterTruyen = new adapterTruyen(getApplicationContext(),truyenArrayList);
+
+            listViewTruyen.setAdapter(adapterTruyen);
+        }
+        cursor.moveToFirst();
+        cursor.close();
         //goij ham
         ActionBar();
         AcctionViewFlipper();
 
+        listViewTruyen.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Create an intent to navigate to the MainNoiDung activity
+                Intent intent = new Intent(MainActivity.this, MainNoiDung.class);
 
+                // Retrieve data from the clicked item based on position
+                String ten = truyenArrayList.get(position).getTenTruyen();
+                String noidung = truyenArrayList.get(position).getNoidung();
+
+                // Add data as intent extras
+                intent.putExtra("tentruyen", ten);
+                intent.putExtra("noidung", noidung);
+
+                // Start the MainNoiDung activity
+                startActivity(intent);
+            }
+        });
     }
     //thanh actionBar với toolBar
     private void ActionBar() {

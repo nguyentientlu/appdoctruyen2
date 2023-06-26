@@ -4,25 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainNoiDung"
+    tools:context=".MainThongTin"
     android:orientation="vertical">
     <TextView
-        android:id="@+id/txttentruyen"
-        android:gravity="center"
-        android:text="Tên Truyện"
-        android:textSize="30dp"
+        android:layout_marginTop="10dp"
+        android:textColor="#1F78BF"
         android:textStyle="bold"
-        android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_gravity="center"
+        android:text="Thông Tin"
+        android:textSize="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
     </TextView>
     <TextView
+        android:id="@+id/txtthongtin"
+        android:layout_marginTop="20dp"
         android:textSize="25dp"
-        android:scrollbars="vertical"
-        android:text="Nội dung"
-        android:id="@+id/txtnoidung"
-        android:layout_margin="20dp"
+        android:padding="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </TextView>
-
 </LinearLayout>

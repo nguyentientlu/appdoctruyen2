@@ -51,7 +51,7 @@ public class databaseTruyen extends SQLiteOpenHelper {
             + ID_TAI_KHOAN + " INTEGER , FOREIGN KEY ( " + ID_TAI_KHOAN + " ) REFERENCES " +
             TABLE_TAIKHOAN + "(" + ID_TAI_KHOAN + "))";
     //thêm dữ liệu vào bảng tài khoản
-    private String SQLQuery2 = "INSERT INTO Taikhoan VAlUES (null,'admin','admin','admin@gmail.com',2)";
+    private String SQLQuery2 = "INSERT INTO Taikhoan VAlUES (null,'admin','admin','admin@gmail.com',1)";
     private String SQLQuery3 = "INSERT INTO Taikhoan VAlUES (null,'admin','tien','tien@gmail.com',2)";
 
     private String SQLQuery4 = "INSERT INTO Truyen VALUES (null,'Rùa và Thỏ','Phần 1:\n" +

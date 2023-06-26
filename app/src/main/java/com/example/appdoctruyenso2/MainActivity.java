@@ -10,7 +10,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -116,22 +115,18 @@ public class MainActivity extends AppCompatActivity {
         listViewMainchinh.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Đăng bài
                 if(position == 0){
                     if(i == 2){
                         Intent intent = new Intent(MainActivity.this,MainAdmin.class);
-                        //Gửi id tài khoản qua màn admin
-                        intent.putExtra("Id",idd);
                         startActivity(intent);
-
                     }
                     else {
                         Toast.makeText(MainActivity.this, "Bạn không có quyền đăng bài", Toast.LENGTH_SHORT).show();
-                        Log.e("Đăng bài : ","Bạn không có quyền ");
                     }
                 }
-                //nếu vị trí ấn là thông tin thì sẽ chuyển qua thông tin app
                 else if(position == 1){
+                    Intent intent = new Intent(MainActivity.this, MainThongTin.class);
+                    startActivity(intent);
 
                 }
                 else if (position == 2 ){

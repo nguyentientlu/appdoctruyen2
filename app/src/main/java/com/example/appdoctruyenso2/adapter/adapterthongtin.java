@@ -26,7 +26,7 @@ public class adapterthongtin extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return taikhoanList.size();
     }
 
     @Override

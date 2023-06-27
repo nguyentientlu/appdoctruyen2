@@ -46,7 +46,7 @@
     <EditText
         android:inputType="textPassword"
         android:drawableRight="@drawable/pass"
-        android:id="@+id/re_matkhau"
+        android:id="@+id/dkmatkhau2"
         android:layout_marginTop="20dp"
         android:layout_width="300dp"
         android:textColorHint="@color/black"

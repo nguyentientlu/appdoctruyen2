@@ -50,13 +50,6 @@ public class MainAdmin extends AppCompatActivity {
             }
         });
 
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Dialogdelete(position);
-//
-//            }
-//        });
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -64,6 +57,7 @@ public class MainAdmin extends AppCompatActivity {
                 return false;
             }
         });
+
     }
     //dialog hien thi cua so xoa
     private void Dialogdelete(int position){

@@ -49,56 +49,55 @@ public class MainAdmin extends AppCompatActivity {
 
             }
         });
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                return false;
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Dialogdelete(position);
+
             }
         });
     }
     //dialog hien thi cua so xoa
-    private void Dialogdelete(int position) {
-        // Tạo đối tượng dialog
+    private void Dialogdelete(int position){
+        //tạo đối tượng dialog
         Dialog dialog = new Dialog(this);
 
-        // Nạp layout vào dialog
+        //nạp layout vào dialog
         dialog.setContentView(R.layout.dialogdelete);
 
-        // Tắt click ra ngoài là đóng, chỉ click no là đóng
+        //tắt click ra ngoài là đóng,chỉ click no là đóng
         dialog.setCanceledOnTouchOutside(false);
 
-        // Ánh xạ
-        Button btnYes = dialog.findViewById(R.id.buttonYes);
-        Button btnNo = dialog.findViewById(R.id.buttonNo);
+        //ánh xạ
+        Button btnYes = findViewById(R.id.buttonYes);
+        Button btnNo = findViewById(R.id.buttonNo);
 
         btnYes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int idtruyen = TruyenArrayList.get(position).getID();
 
-                // Xóa dữ liệu
+                //xóa dữ liệu
                 databaseTruyen.Delete(idtruyen);
 
-                // Cập nhật
-                Intent intent = new Intent(MainAdmin.this, MainAdmin.class);
+                //cập nhật
+                Intent intent = new Intent(MainAdmin.this,MainAdmin.class);
                 finish();
                 startActivity(intent);
-                Toast.makeText(MainAdmin.this, "Xóa truyện thành công!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainAdmin.this,"xóa truyện thành công! ",Toast.LENGTH_SHORT).show();
             }
         });
-
         btnNo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Thực hiện đóng dialog
+                //thực hiện đóng dialog
                 dialog.cancel();
             }
         });
-
         dialog.show();
     }
-
-    // gán dữ liệu cho listview
+// gán dữ liệu cho listview
     private void initList() {
         TruyenArrayList = new ArrayList<>();
         databaseTruyen = new databaseTruyen(this);

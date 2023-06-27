@@ -36,12 +36,13 @@ public class MainDangKy extends AppCompatActivity {
             public void onClick(View v) {
                 String taikhoan = edtDKTaikhoan.getText().toString();
                 String matkhau = edtDKMatkhau.getText().toString();
-                String matkhau2 = edtDKMatkhau2.getText().toString();
                 String email = edtDKEmail.getText().toString();
+                String matkhau2 = edtDKMatkhau2.getText().toString();
 
                 taikhoan taikhoan1 = CreateTaiKhoan();
-                if(taikhoan.equals("") || matkhau.equals("") ||  email.equals("") ){
+                if(taikhoan.equals("") || matkhau.equals("") || email.equals("") ){
                     Log.e("thông báo : ", "chưa nhập đầy đủ thông tin");
+                    Toast.makeText(MainDangKy.this, "chưa nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                 }
                 else if (taikhoan.length() <= 6 || matkhau.length() <= 6) {
                     Log.e("thông báo : ", "tài khoản phải có ít nhất 6 ký tự");
@@ -49,7 +50,7 @@ public class MainDangKy extends AppCompatActivity {
 //                else if (databasetruyen.checkTaiKhoanTonTai(taikhoan)) {
 //                    Log.e("thông báo : ", "tài khoản đã tồn tại");
 //                    Toast.makeText(MainDangKy.this, "tài khoản đã tồn tại", Toast.LENGTH_SHORT).show();}
-                else if ( matkhau2 == matkhau){
+                else if ( matkhau2.equals(matkhau) == false){
                     Toast.makeText(MainDangKy.this, "2 mật khẩu không giống nhau \n Nhập lại mật khẩu", Toast.LENGTH_SHORT).show();
                 }
                 else if (email.contains("@gmail.com" ) == false) {
@@ -58,7 +59,6 @@ public class MainDangKy extends AppCompatActivity {
                     databasetruyen.AddTaiKhoan(taikhoan1);
                     Toast.makeText(MainDangKy.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
         btnDangNhap.setOnClickListener(new View.OnClickListener() {

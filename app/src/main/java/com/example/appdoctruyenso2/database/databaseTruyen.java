@@ -258,6 +258,14 @@ public class databaseTruyen extends SQLiteOpenHelper {
         return res;
     }
 
+
+    //Lấy tất cả truyện
+    public Cursor getData2(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("SELECT * FROM " + TABLE_TRUYEN ,null);
+        return res;
+    }
+
     //    add truyện
     public void AddTruyen(truyen truyen) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -278,11 +286,4 @@ public class databaseTruyen extends SQLiteOpenHelper {
         int res = db.delete(TABLE_TRUYEN,ID_TRUYEN+" = "+i,null);
         return res;
     }
-    //Lấy tất cả truyện
-    public Cursor getData2(){
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("SELECT * FROM " + TABLE_TRUYEN ,null);
-        return res;
-    }
-
 }

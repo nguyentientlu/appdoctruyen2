@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.appdoctruyenso2.adapter.adapterTruyen;
 import com.example.appdoctruyenso2.database.databaseTruyen;
@@ -34,7 +35,7 @@ public class MainAdmin extends AppCompatActivity {
         listView = findViewById(R.id.listAdmin);
         buttonThem = findViewById(R.id.button);
 
-//        initList();
+        initList();
         buttonThem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,29 +56,45 @@ public class MainAdmin extends AppCompatActivity {
 
             }
         });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int idtruyen = TruyenArrayList.get(position).getID();
+
+                //xóa dữ liệu
+                databaseTruyen.Delete(idtruyen);
+
+                //cập nhật
+                Intent intent = new Intent(MainAdmin.this,MainAdmin.class);
+                finish();
+                startActivity(intent);
+                Toast.makeText(MainAdmin.this,"xóa truyện thành công! ",Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }
 // gán dữ liệu cho listview
-//    private void initList() {
-//        TruyenArrayList = new ArrayList<>();
-//        databaseTruyen = new databaseTruyen(this);
-//
-//        Cursor cursor1 = databaseTruyen.getData2();
-//        while(cursor1.moveToNext()){
-//            int id = cursor1.getInt(0);
-//            String tentruyen = cursor1.getString(1);
-//            String noidung = cursor1.getString(2);
-//            String anh = cursor1.getString(3);
-//            int id_tk = cursor1.getInt(4);
-//
-//            TruyenArrayList.add(new truyen(id,tentruyen,noidung,anh,id_tk));
-//
-//            adapterTruyen = new adapterTruyen(getApplicationContext(),TruyenArrayList);
-//
-//            listView.setAdapter(adapterTruyen);
-//        }
-//        cursor1.moveToFirst();
-//        cursor1.close();
-//
-//    }
+    private void initList() {
+        TruyenArrayList = new ArrayList<>();
+        databaseTruyen = new databaseTruyen(this);
+
+        Cursor cursor1 = databaseTruyen.getData2();
+        while(cursor1.moveToNext()){
+            int id = cursor1.getInt(0);
+            String tentruyen = cursor1.getString(1);
+            String noidung = cursor1.getString(2);
+            String anh = cursor1.getString(3);
+            int id_tk = cursor1.getInt(4);
+
+            TruyenArrayList.add(new truyen(id,tentruyen,noidung,anh,id_tk));
+
+            adapterTruyen = new adapterTruyen(getApplicationContext(),TruyenArrayList);
+
+            listView.setAdapter(adapterTruyen);
+        }
+        cursor1.moveToFirst();
+        cursor1.close();
+
+    }
 
 }

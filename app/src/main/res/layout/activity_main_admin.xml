@@ -13,7 +13,7 @@
         android:text="Thêm truyện"
         tools:layout_editor_absoluteX="131dp"
         tools:layout_editor_absoluteY="101dp"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"></Button>
     <ListView
         android:id="@+id/listAdmin"
         android:layout_width="match_parent"

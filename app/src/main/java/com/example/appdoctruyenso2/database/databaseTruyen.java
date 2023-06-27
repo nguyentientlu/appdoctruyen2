@@ -51,7 +51,7 @@ public class databaseTruyen extends SQLiteOpenHelper {
             + ID_TAI_KHOAN + " INTEGER , FOREIGN KEY ( " + ID_TAI_KHOAN + " ) REFERENCES " +
             TABLE_TAIKHOAN + "(" + ID_TAI_KHOAN + "))";
     //thêm dữ liệu vào bảng tài khoản
-    private String SQLQuery2 = "INSERT INTO Taikhoan VAlUES (null,'admin','admin','admin@gmail.com',1)";
+    private String SQLQuery2 = "INSERT INTO Taikhoan VAlUES (null,'admin','admin','admin@gmail.com',2)";
     private String SQLQuery3 = "INSERT INTO Taikhoan VAlUES (null,'admin','tien','tien@gmail.com',2)";
 
     private String SQLQuery4 = "INSERT INTO Truyen VALUES (null,'Rùa và Thỏ','Phần 1:\n" +
@@ -63,7 +63,7 @@ public class databaseTruyen extends SQLiteOpenHelper {
             "Phần 2:\n" +
             "\n" +
             "Thỏ vô cùng thất vọng vì để thua Rùa, nó nhận ra rằng nó thua chính vì quá tự tin, bất cẩn và thiếu kỷ luật. Nếu nó không xem mọi thứ quá dễ dàng và chắc thắng thì rùa không thể có cơ hội hạ được nó. Vì thế, Thỏ quyết định thách thức Rùa bằng một cuộc đua mới. Rùa đồng ý. Lần này, Thỏ chạy với tất cả sức lực của nó và chạy một mạch về đích. Nó bỏ xa Rùa đến mấy dặm đường.\n" +
-            "Ý nghĩa câu chuyện phần 2: Biết sai và sửa sai là một đức tính tốt, đó chính là lý do giúp anh chàng thỏ giành được chiến thắng ở cuộc đua thứ 2. Mẹ hãy giải thích cho bé hiểu rằng trong công việc hàng ngày giữa một người chậm, cẩn thận và đáng tin cậy với một người nhanh nhẹn, đáng tin cậy, chắc chắn người nhanh nhẹn sẽ được trọng dụng hơn nhiều và họ sẽ tiến xa hơn trong học tập, cũng như trong cuộc sống. Cha mẹ hãy giúp bé hiểu rõ thông điệp chậm và chắc là điều tốt, nhưng nhanh và đáng tin cậy sẽ tốt hơn rất nhiều.','https://toplist.vn/images/800px/rua-va-tho-230179.jpg',1)";
+            "Ý nghĩa câu chuyện phần 2: Biết sai và sửa sai là một đức tính tốt, đó chính là lý do giúp anh chàng thỏ giành được chiến thắng ở cuộc đua thứ 2. Mẹ hãy giải thích cho bé hiểu rằng trong công việc hàng ngày giữa một người chậm, cẩn thận và đáng tin cậy với một người nhanh nhẹn, đáng tin cậy, chắc chắn người nhanh nhẹn sẽ được trọng dụng hơn nhiều và họ sẽ tiến xa hơn trong học tập, cũng như trong cuộc sống. Cha mẹ hãy giúp bé hiểu rõ thông điệp chậm và chắc là điều tốt, nhưng nhanh và đáng tin cậy sẽ tốt hơn rất nhiều.','https://toplist.vn/images/800px/cau-chuyen-co-tich-viet-nam-hay-nhat-43873.jpg',1)";
     private String SQLQuery5 = "INSERT INTO Truyen VALUES (null,'Củ cải trắng','Mùa đông đã đến rồi trời lạnh buốt, Thỏ con không có gì để ăn cả. Thỏ con mặc áo vào rồi ra ngoài kiếm thức ăn. Nó đi mãi đi mãi cuối cùng cũng tìm được hai củ cải trắng. Thỏ con reo lên:\n" +
             "\n" +
             "– Ôi, ở đây có hai củ cải trắng liền, mình thật là may mắn!\n" +
@@ -205,7 +205,61 @@ public class databaseTruyen extends SQLiteOpenHelper {
             "\n" +
             "Ý nghĩa câu chuyện: Có thể cậu bé chăn cừu không phải ngay sau đó sẽ trở nên khiêm tốn, học hỏi luôn được nhưng rõ ràng là cậu đã nhận ra người ta không thể sống lẻ loi được.','https://toplist.vn/images/800px/cau-be-chan-cuu-va-cay-da-co-thu-230184.jpg',1)";
 
+    private String SQLQuery10 = "INSERT INTO Truyen VALUES (null,'QUẢ BẦU TIÊN','Ngày xửa ngày xưa, xưa lắm rồi khi mà muôn thú, cây cỏ, con người còn trò chuyện được với nhau. Trên đồng cỏ rậm ven khu làng có một loài cây gọi là cây đa. Đó là một thứ cây to, khỏe, lá của nó rậm rạp đến nỗi không một tia nắng nào có thể lọt qua được. Vào những ngày trời nắng nóng người ta thường nghỉ chân một lát và trò chuyện hàn huyên cùng cây dưới bóng cây mát rượi. Mọi người ai cũng biết rằng cây đa rất thông thái vì cây đã có tuổi, đã từng trải.\n" +
+            "\n" +
+            "\n" +
+            "Một hôm, có một cậu bé chăn cừu ngồi nghỉ mát dưới gốc cây sau một ngày dài phơi mình dưới nắng cậu bé thấy người mệt mỏi và nóng bức. Một làn gió mơn man thổi thoa nhẹ lên tấm thân mỏi mệt của chú bé. Cậu bé bắt đầu thấy buồn ngủ. Vừa đặt mình xuống cậu bé bỗng ngước mắt nhìn lên những cành cây. Bấy giờ cậu bé bỗng thấy mình thật kiêu hãnh, cậu vẫn thường hay khoe với mọi người rằng cậu có tài chăn cừu và đàn cừu của cậu nhờ vậy mà lớn rất nhanh. Khi cậu bé phát hiện ra cây đa chỉ có những chùm quả rất nhỏ, nó bắt đầu thấy ngạc nhiên. Cậu bắt đầu chế giễu: hư, một cái cây to khỏe thế này mà làm sao chỉ có những bông hoa những chùm quả bé tí tẹo thế kia, mọi người vẫn bảo là cái cây này thông thái lắm kia mà nhưng làm sao nó có thể thông thái khi mà quả của nó chỉ toàn bé xíu như vậy. Dĩ nhiên là cây đa nghe hết những lời của cậu bé nhưng cây vẫn im lặng và cành lá chỉ khẽ rung rinh đủ để cho gió cất lên khúc hát ru êm dịu. Cậu bé bắt đầu ngủ, cậu ngáy o o…. Cốc.\n" +
+            "Quả đa nhỏ rụng chính giữa trán của cậu bé, nó bừng tỉnh nhưng càu nhàu: “Gừm… người ta vừa mới chợp mắt được có một tí”, rồi nó nhặt quả đa lên chưa hết chưa biết định làm gì với quả đa này bỗng nhiên cậu bé nghe thấy có tiếng cười khúc khích, cậu nghe thấy cây hỏi:\n" +
+            "– Có đau không ?.\n" +
+            "– Không nhưng mà làm người ta mất cả giấc ngủ .\n" +
+            "– Đó là bài học cho cậu bé to đầu đấy. Cậu chẳng vừa nhạo tôi là chỉ sinh ra toàn những quả nhỏ xíu là gì.\n" +
+            "– Tôi nhạo đấy tại sao người đời lại bảo bác là thông thái được nhỉ? Phá giấc ngủ trưa của người khác! Thế cũng là thông minh chắc!.\n" +
+            "Cây cười và nói: này này anh bạn anh hãy nghe đây những chiếc lá của tôi cho cậu bóng mát để cậu lấy chỗ nghỉ ngơi. Ừ thì cứ cho là quả của tôi nó bé đi chăng nữa nhưng chẳng lẽ cậu không thấy rằng tạo hóa hoạt động rất hoàn chỉnh đó sao. Cậu thử tưởng tượng xem, nếu quả của tôi to như quả dừa thì điều gì sẽ xảy ra khi nó rơi vào đầu cậu.\n" +
+            "Cậu bé im thin thít: ừ nhở. Cậu chưa hề nghĩ đến điều này bao giờ cả.\n" +
+            "Cây lại nhẹ nhàng tiếp lời:\n" +
+            "– Những người khiêm tốn có thể học hỏi rất nhiều điều từ việc quan sát những vật xung quanh đấy cậu bé ạ.\n" +
+            "– Vâng bác đa bác cứ nói tiếp đi.\n" +
+            "– Cậu hãy bắt đầu làm bạn với những gì ở quanh cậu. Chúng ta tất cả đều cần tới nhau. Cậu cứ nhìn bầy ong kia mà xem. Nhờ có ong mà hoa của tôi mới có thể trở thành quả. Thế còn bầy chim kia thì sao. Chúng làm tổ ngay giữa tán lá của tôi đây này. Những con chim bố mẹ kia phải làm việc vất vả cả ngày để bắt sâu nuôi con và cậu có biết việc làm đó có ý nghĩa gì với tôi không?.\n" +
+            "– Không, có ý nghĩa gì vậy hả bác?.\n" +
+            "– Sâu ăn lá chính vậy loài chim kia chính là những người bạn của tôi. Chúng còn giúp cả cậu nữa đấy, sở dĩ cừu của cậu có đủ lá và cỏ để ăn là vì chim chóc đã tiêu diệt hết các loài côn trùng và sâu bọ. Và chưa hết đâu cậu bé ạ!.\n" +
+            "– Còn gì thế nữa hả bác đa.\n" +
+            "– Cậu hãy nhìn xuống chân mình mà xem, những chiếc lá rụng tạo thành lớp thảm mục, những con sâu đào đất ngoi lên để ăn lá, chúng đào đất thành những lỗ nhỏ, nhờ đó không khí có thể vào được trong đất. Có không khí trong đất nên bộ rễ của tôi mới khỏe thế nào đấy. Rễ khỏe nên tôi cũng khỏe hơn. Nào thế bây giờ cậu trẻ đã hiểu chưa?.\n" +
+            "– Cháu hiểu rồi thưa bác. Bác tha lỗi cho cháu nhé vì đã cười nhạo bác bác đa ạ.\n" +
+            "– Không sao bây giờ cháu hãy ra dắt cừu về đi.\n" +
+            "\n" +
+            "\n" +
+            "Ý nghĩa câu chuyện: Có thể cậu bé chăn cừu không phải ngay sau đó sẽ trở nên khiêm tốn, học hỏi luôn được nhưng rõ ràng là cậu đã nhận ra người ta không thể sống lẻ loi được.','https://cdn3.dhht.vn/wp-content/uploads/2022/12/30-bo-truyen-co-tich-viet-nam-hay-nhat-cho-be-thich-me-35.jpg',1)";
+    private String SQLQuery9 = "INSERT INTO Truyen VALUES (null,'Củ cải trắng','Mùa đông đã đến rồi trời lạnh buốt, Thỏ con không có gì để ăn cả. Thỏ con mặc áo vào rồi ra ngoài kiếm thức ăn. Nó đi mãi đi mãi cuối cùng cũng tìm được hai củ cải trắng. Thỏ con reo lên:\n" +
+            "\n" +
+            "– Ôi, ở đây có hai củ cải trắng liền, mình thật là may mắn!\n" +
+            "\n" +
+            "Thỏ con đói bụng, muốn ăn lắm rồi. Nhưng Thỏ lại nghĩ:\n" +
+            "\n" +
+            "– Ừm… trời lạnh thế này, chắc Dê con cũng không có cái gì để ăn đâu. Mình phải mang cho Dê con một củ mới được.\n" +
+            "\n" +
+            "Thế là Thỏ con đi sang nhà bạn Dê nhưng Dê con không có nhà nên Thỏ đặt củ cải lên bàn rồi đi về.\n" +
+            "\n" +
+            "Tình cờ, Dê con đi chơi cũng tìm được một củ cải trắng nhưng nó chỉ ăn trước một nửa.\n" +
+            "\n" +
+            "Về đến nhà, lại thấy có một củ cải trắng ở trên bàn Dê thèm ăn lắm, nhưng lại nghĩ:\n" +
+            "\n" +
+            "– Ôi trời lạnh thế này chắc Hươu con không có cái gì để ăn rồi, mình phải mang cho Hươu con mới được.\n" +
+            "\n" +
+            "Dê con đến nhà Hươu nhưng Hươu lại đi vắng, Dê con bèn đặt củ cải ở trên bàn rồi về.\n" +
+            "\n" +
+            "Khi Hươu về nhà, thấy củ cải ở trên bàn, Hươu ngạc nhiên lắm.\n" +
+            "\n" +
+            "– Ồ, củ cải trắng ở đâu mà ngon vậy nhỉ. Xuỵt… thích quá. Nhưng chắc trời lạnh thế này, Thỏ con cũng không có gì ăn đâu. Mình phải mang sang cho Thỏ mới được.\n" +
+            "\n" +
+            "Khi Hươu đến thì Thỏ con đang ngủ rất say. Khi tỉnh dậy Thỏ lại thấy trên bàn mình xuất hiện một củ cải trắng.Thỏ vui lắm nó chạy đi gọi các bạn:\n" +
+            "\n" +
+            "– Bạn Hươu ơi, bạn Dê ơi hãy đến nhà tôi, chúng ta cùng ăn củ cải trắng thơm ngon này.\n" +
+            "\n" +
+            "Thế là cuối cùng, củ cải trắng ấy được chia sẻ cho cả ba người bạn tốt bụng của chúng ta. Các bạn thấy đấy tấm lòng thơm thảo, sẵn sàng sẻ chia của các bạn ấy thật là đáng học tập phải không nào?\n" +
+            "\n" +
+            "Ý nghĩa câu chuyện: Khi cho đi bạn sẽ nhận lại được nhiều hơn những thứ mình có.','https://toplist.vn/images/800px/cu-cai-trang-230181.jpg',2)";
     //tạo bảng tại phương thức
+
     public databaseTruyen(@Nullable Context context) {
         super(context, DATABASE_NAME, null, VERSION);
     }
@@ -221,6 +275,8 @@ public class databaseTruyen extends SQLiteOpenHelper {
         db.execSQL(SQLQuery5);
         db.execSQL(SQLQuery7);
         db.execSQL(SQLQuery8);
+        db.execSQL(SQLQuery9);
+        db.execSQL(SQLQuery10);
     }
 
     @Override
@@ -247,22 +303,13 @@ public class databaseTruyen extends SQLiteOpenHelper {
         db.insert(TABLE_TAIKHOAN, null, values);
         //đoóng lại khi không dugf
         db.close();
-        Log.e("ADD TK", "TC");
     }
 
 
-    //lấy 3 truyện mới nhất
+    //lấy 4 truyện mới nhất
     public Cursor getDatal() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("SELECT * FROM " + TABLE_TRUYEN + " ORDER BY " + ID_TRUYEN + " DESC LIMIT 3", null);
-        return res;
-    }
-
-
-    //Lấy tất cả truyện
-    public Cursor getData2(){
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("SELECT * FROM " + TABLE_TRUYEN ,null);
+        Cursor res = db.rawQuery("SELECT * FROM " + TABLE_TRUYEN + " ORDER BY " + ID_TRUYEN + " DESC LIMIT 4", null);
         return res;
     }
 
@@ -271,19 +318,58 @@ public class databaseTruyen extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
+
         values.put(TEN_TRUYEN, truyen.getTenTruyen());
         values.put(NOI_DUNG, truyen.getNoidung());
         values.put(IMAGE, truyen.getAnh());
         values.put(ID_TAI_KHOAN, truyen.getID_TK());
 
-        db.insert(TABLE_TRUYEN,null,values);
+        db.insert(TABLE_TRUYEN, null, values);
         db.close();
     }
-    // delete truyện
-    public int Delete(int i){
-        SQLiteDatabase db = this.getReadableDatabase();
 
-        int res = db.delete(TABLE_TRUYEN,ID_TRUYEN+" = "+i,null);
+    //đếm số truyện trong data
+    public int getCountTruyen() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT COUNT(*) FROM " + TABLE_TRUYEN;
+        Cursor cursor = db.rawQuery(query, null);
+        int count = 0;
+        if (cursor.moveToFirst()) {
+            count = cursor.getInt(0);
+        }
+        cursor.close();
+        return count;
+    }
+    // delete truyện
+    public int Delete(int i) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String whereClause = ID_TRUYEN + " = ?";
+        String[] whereArgs = { String.valueOf(i) };
+
+        int res = db.delete(TABLE_TRUYEN, whereClause, whereArgs);
         return res;
+    }
+
+
+    //Lấy tất cả truyện
+    public Cursor getData2() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("SELECT * FROM " + TABLE_TRUYEN, null);
+        return res;
+    }
+
+    public boolean checkTaiKhoanTonTai(String taikhoan) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = {"TEN_TAI_KHOAN"};
+        String selection = "TEN_TAI_KHOAN = ?";
+        String[] selectionArgs = {taikhoan};
+        //tạo 1 đối tượng con trỏ để lưu thông tin tài khoản được truyền vào
+        Cursor cursor = db.query("TABLE_TAIKHOAN", columns, selection, selectionArgs, null, null, null);
+
+        boolean taiKhoanTonTai = cursor.moveToFirst(); //con trỏ đi từ đầu duyệt xem có đối tượng không
+
+        cursor.close();
+        return taiKhoanTonTai;
     }
 }

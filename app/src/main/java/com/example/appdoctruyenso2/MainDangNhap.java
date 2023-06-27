@@ -25,6 +25,9 @@ public class MainDangNhap extends AppCompatActivity {
         edtMatkhau = findViewById(R.id.matkhau);
         btnDangnhap = findViewById(R.id.dangnhap);
         btnDangky = findViewById(R.id.dangky);
+
+
+
         //đối tượng databasetruyen
         databasetruyen = new databaseTruyen(this);
         //tạo sự kiện nhấn nút để chuyển form đăng ký
@@ -40,6 +43,7 @@ public class MainDangNhap extends AppCompatActivity {
             public void onClick(View v) {
                 String tentaikhoan = edtTaikhoan.getText().toString();
                 String matkhat = edtMatkhau.getText().toString();
+
                 //sử dụng Curror lấy dữ liệu
                 Cursor cursor =databasetruyen.getData();
                 //thuwcj hiện vòng lặp để lấy dữ liệu từ con trỏ
@@ -48,6 +52,7 @@ public class MainDangNhap extends AppCompatActivity {
                     //lấy dữ liệu gán vào biến
                     String datataikhoan =cursor.getString(1);
                     String datamatkhau = cursor.getString(2);
+
                     if (datataikhoan.equals(tentaikhoan) && datamatkhau.equals(matkhat)) {
                         //lấy dữ liệu
                         int idd = cursor.getInt(0);

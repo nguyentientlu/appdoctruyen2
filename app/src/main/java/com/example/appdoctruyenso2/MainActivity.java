@@ -60,10 +60,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //nhận dữ liệu ở màn đăng nhập gửi đến
         Intent intentpq =getIntent();
-        int i = intentpq.getIntExtra("phang",0);
+        int i = intentpq.getIntExtra("phanquyen",0);
         int idd = intentpq.getIntExtra("idd",0);
         email = intentpq.getStringExtra("email");
-        tentaikhoan = intentpq.getStringExtra("tentaikhoan");
+        tentaikhoan = intentpq.getStringExtra("taikhoan");
 
         //anhs xa
         toolbar = findViewById(R.id.toolbarMain);
@@ -78,6 +78,9 @@ public class MainActivity extends AppCompatActivity {
         truyenArrayList = new ArrayList<>();
 
         databaseTruyen = new databaseTruyen(this);
+
+        int count = databaseTruyen.getCountTruyen();
+        Toast.makeText(this, "có: "+ count +" truyện", Toast.LENGTH_SHORT).show();
 
         Cursor cursor = databaseTruyen.getDatal();
         while (cursor.moveToNext()){
@@ -117,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position == 0){
-                    if(i == 0){
+                    if(i == 2){
                         Intent intent = new Intent(MainActivity.this,MainAdmin.class);
                         //gửi id tài khoản qua màn admin
                         intent.putExtra("Id",idd);

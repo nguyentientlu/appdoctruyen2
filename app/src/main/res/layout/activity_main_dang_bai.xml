@@ -18,7 +18,7 @@
 
     <EditText
         android:inputType="text"
-        android:id="@+id/dbTenchuyen"
+        android:id="@+id/dbTentruyen"
         android:hint="Tên truyện"
         android:layout_marginTop="30sp"
         android:layout_gravity="center"

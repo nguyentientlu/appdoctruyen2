@@ -10,6 +10,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //nhận dữ liệu ở màn đăbg nhập gửi đến
+        //nhận dữ liệu ở màn đăng nhập gửi đến
         Intent intentpq =getIntent();
         int i = intentpq.getIntExtra("phang",0);
         int idd = intentpq.getIntExtra("idd",0);
@@ -117,15 +118,23 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position == 0){
                     if(i == 2){
-
+                        Intent intent = new Intent(MainActivity.this,MainAdmin.class);
+                        //gửi id tài khoản qua màn admin
+                        intent.putExtra("Id",idd);
+                        startActivity(intent);
                     }
                     else {
                         Toast.makeText(MainActivity.this, "Bạn không có quyền đăng bài", Toast.LENGTH_SHORT).show();
+                        Log.e("Đăng bài : ","Bạn không có quyền");
                     }
                 }
+                //Chuyển qua thông tin app
                 else if(position == 1){
+                    Intent intent = new Intent(MainActivity.this, MainThongTin.class);
+                    startActivity(intent);
 
                 }
+                //Đăng xuất
                 else if (position == 2 ){
                     finish();
                 }

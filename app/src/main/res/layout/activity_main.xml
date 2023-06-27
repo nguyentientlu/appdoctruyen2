@@ -57,13 +57,14 @@
             android:layout_gravity="start">
             <ListView
                 android:id="@+id/listThongtin"
-                android:layout_width="match_parent"
-                android:layout_height="150dp">
+                android:layout_width="wrap_content"
+                android:layout_height="250dp">
             </ListView>
             <ListView
+                android:layout_marginTop="250dp"
                 android:id="@+id/listMainchinh"
-                android:layout_width="match_parent"
-                android:layout_height="150dp">
+                android:layout_width="wrap_content"
+                android:layout_height="350dp">
             </ListView>
         </com.google.android.material.navigation.NavigationView>
     </androidx.drawerlayout.widget.DrawerLayout>

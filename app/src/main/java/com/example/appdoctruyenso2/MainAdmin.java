@@ -50,11 +50,11 @@ public class MainAdmin extends AppCompatActivity {
             }
         });
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Dialogdelete(position);
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+                return false;
             }
         });
     }

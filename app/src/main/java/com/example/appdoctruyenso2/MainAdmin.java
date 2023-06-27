@@ -99,7 +99,9 @@ public class MainAdmin extends AppCompatActivity {
     }
 // gán dữ liệu cho listview
     private void initList() {
+
         TruyenArrayList = new ArrayList<>();
+
         databaseTruyen = new databaseTruyen(this);
 
         Cursor cursor1 = databaseTruyen.getData2();

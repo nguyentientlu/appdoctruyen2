@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position == 0){
-                    if(i == 2){
+                    if(i == 0){
                         Intent intent = new Intent(MainActivity.this,MainAdmin.class);
                         //gửi id tài khoản qua màn admin
                         intent.putExtra("Id",idd);

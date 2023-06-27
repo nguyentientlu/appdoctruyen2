@@ -50,15 +50,23 @@ public class MainAdmin extends AppCompatActivity {
             }
         });
 
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Dialogdelete(position);
+//
+//            }
+//        });
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Dialogdelete(position);
                 return false;
             }
         });
+    }
     //dialog hien thi cua so xoa
     private void Dialogdelete(int position){
-
         //tạo đối tượng dialog
         Dialog dialog = new Dialog(this);
 
@@ -96,7 +104,7 @@ public class MainAdmin extends AppCompatActivity {
         });
         dialog.show();
     }
-// gán dữ liệu cho listview
+    // gán dữ liệu cho listview
     private void initList() {
         TruyenArrayList = new ArrayList<>();
         databaseTruyen = new databaseTruyen(this);

@@ -40,9 +40,11 @@ public class MainAdmin extends AppCompatActivity {
         buttonThem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //xem id tk admin vao chinh sua
                 Intent intent1=getIntent();
                 int id  = intent1.getIntExtra("Id",0);
 
+                //tiep tuc gui id qua man hinh them truyen
                 Intent intent = new Intent(MainAdmin.this,MainDangBai.class);
                 intent.putExtra("Id",id);
                 startActivity(intent);
@@ -54,6 +56,7 @@ public class MainAdmin extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Dialogdelete(position);
+
                 return false;
             }
         });
@@ -71,8 +74,8 @@ public class MainAdmin extends AppCompatActivity {
         dialog.setCanceledOnTouchOutside(false);
 
         //ánh xạ
-        Button btnYes = findViewById(R.id.buttonYes);
-        Button btnNo = findViewById(R.id.buttonNo);
+        Button btnYes = dialog.findViewById(R.id.buttonYes);
+        Button btnNo = dialog.findViewById(R.id.buttonNo);
 
         btnYes.setOnClickListener(new View.OnClickListener() {
             @Override
